@@ -99,6 +99,20 @@ def saveTabs(Tabs):
     #saving tabs in file
     json.dump(Tabs, file)
 
+def loadTabs():
+    loadedTabs=[]
+    #taking file path from user
+    filePath=input("Enter the file path:")
+
+    #openning file
+    file = open(filePath, 'r')
+
+    #loading tabs from file
+    loadedTabs=json.load(file)
+
+    printTitles(loadedTabs)
+
+
 
 if __name__ == '__main__':
     while True:
@@ -118,7 +132,8 @@ if __name__ == '__main__':
             sortTabs(Tabs)
         if choice==7:
             saveTabs(Tabs)
-        # if choice==8::
+        if choice==8:
+            loadTabs()
         if choice==9:
             print("Program closed")
             break
