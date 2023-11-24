@@ -44,7 +44,7 @@ def switchTabs(Tabs):
     else:
         print("Not available URL")
 
-#choice 4:
+#choice 4::
 def printTitles(Tabs):
     for tab in Tabs:
         print(tab['Title'])
