@@ -45,7 +45,13 @@ def switchTabs(Tabs):
         print("Not available URL")
 
 #choice 4:
-
+def printTitles(Tabs):
+    for tab in Tabs:
+        print(tab['Title'])
+        if len(tab['nested_tabs'])!=0:
+            for i in tab['nested_tabs']:
+                print("\t")
+                print(i['Title'])
 
 if __name__ == '__main__':
     while True:
@@ -57,8 +63,8 @@ if __name__ == '__main__':
             closeTab(Tabs)
         if choice==3:
             switchTabs(Tabs)
-
-        # if choice==4:
+        if choice==4:
+            printTitles(Tabs)
         # if choice==5:
         # if choice==6:
         # if choice==7:
