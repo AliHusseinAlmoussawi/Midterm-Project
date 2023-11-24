@@ -89,6 +89,16 @@ def sortTabs(Tabs):
             k+=1
 
 #Saving tabs
+def saveTabs(Tabs):
+    #taking file path from user
+    filePath=input("Enter the file path: ")
+
+    #openning file
+    file=open(filePath,'w')
+
+    #saving tabs in file
+    json.dump(Tabs, file)
+
 
 if __name__ == '__main__':
     while True:
@@ -107,6 +117,7 @@ if __name__ == '__main__':
         if choice==6:
             sortTabs(Tabs)
         if choice==7:
+            saveTabs(Tabs)
         # if choice==8:
         if choice==9:
             print("Program closed")
