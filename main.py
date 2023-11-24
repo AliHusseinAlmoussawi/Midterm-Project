@@ -1,3 +1,4 @@
+import requests
 Tabs=[]
 #Greeting the user and displaying optionss
 def mainPage():
@@ -25,7 +26,6 @@ def addANewTab(Tabs):
     Tab['nested_tabs']=nested_tabs
     Tabs.append(Tab)
 
-
 #choice 2
 def closeTab(Tabs):
     i=int(input("Input the index of the tab you wish to close:"))
@@ -33,6 +33,9 @@ def closeTab(Tabs):
         Tabs.pop()
     else:
         Tabs.pop(i)
+
+#choice 3:
+def switchTabs(Tabs):
 
 if __name__ == '__main__':
     while True:
