@@ -1,4 +1,4 @@
-#Greeting the user and displaying options
+#Greeting the user and displaying optionss
 def mainPage():
     print("Hello, choose an option:")
     print("1. Open Tab")
