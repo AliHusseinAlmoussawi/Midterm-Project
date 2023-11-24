@@ -29,8 +29,10 @@ def addANewTab(Tabs):
 #choice 2
 def closeTab(Tabs):
     i=int(input("Input the index of the tab you wish to close:"))
-    Tabs.pop(i)
-    print
+    if i<0 or i>len(Tabs):
+        Tabs.pop()
+    else:
+        Tabs.pop(i)
 
 if __name__ == '__main__':
     while True:
