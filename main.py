@@ -24,12 +24,14 @@ def addANewTab(Tabs):
     Tab['Content']=content
     Tab['nested_tabs']=nested_tabs
     Tabs.append(Tab)
-    print(Tabs)
+
 
 #choice 2
 def closeTab(Tabs):
     i=int(input("Input the index of the tab you wish to close:"))
-    Tabs[i].remo
+    Tabs.pop(i)
+    print
+
 if __name__ == '__main__':
     while True:
         mainPage()
@@ -38,6 +40,7 @@ if __name__ == '__main__':
             addANewTab(Tabs)
         if choice==2:
             closeTab(Tabs)
+        print(Tabs)
 
         # if choice==3:
         # if choice==4:
