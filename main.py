@@ -56,6 +56,37 @@ def createNestedLoops(Tabs):
     i=int(input("The index of the parent tab where the nested tab is created: "))
     addANewTab(Tabs[i]['nested_tabs'])
 
+#choice 6(sorting tabs according to titles
+def sortTabs(Tabs):
+    if len(Tabs)>1:
+        mid=len(Tabs)//2
+        left=Tabs[:mid]
+        right=Tabs[mid:]
+
+        sortTabs(left)
+        sortTabs(right)
+
+        i=j=k=0
+
+        while i<len(left) and j<len(right):
+            if left[i]['Title']<right[j]['Title']:
+                Tabs[k]=left[i]
+                i+=1
+            else:
+                Tabs[k]=right[j]
+                j+=1
+
+            k+=1
+        while i<len(left):
+            Tabs[k]=left[i]
+            i+=1
+            k+=1
+
+        while j<len(right):
+            Tabs[k] = right[j]
+            j+=1
+            k+=1
+
 
 
 
@@ -75,7 +106,8 @@ if __name__ == '__main__':
             printTitles(Tabs)
         if choice==5:
             createNestedLoops(Tabs)
-        # if choice==6:
+        if choice==6:
+            sortTabs(Tabs)
         # if choice==7:
         # if choice==8:
         # if choice==9:
