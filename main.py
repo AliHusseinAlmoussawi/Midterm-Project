@@ -44,14 +44,22 @@ def switchTabs(Tabs):
     else:
         print("Not available URL")
 
-#choice 4::
+#choice 4:
 def printTitles(Tabs):
     for tab in Tabs:
         print(tab['Title'])
         if len(tab['nested_tabs'])!=0:
             for i in tab['nested_tabs']:
-                print("\t")
-                print(i['Title'])
+                print("\t"+i['Title'])
+
+def createNestedLoops(Tabs):
+    i=int(input("The index of the parent tab where the nested tab is created: "))
+    addANewTab(Tabs[i]['nested_tabs'])
+
+
+
+
+
 
 if __name__ == '__main__':
     while True:
@@ -65,7 +73,8 @@ if __name__ == '__main__':
             switchTabs(Tabs)
         if choice==4:
             printTitles(Tabs)
-        # if choice==5:
+        if choice==5:
+            createNestedLoops(Tabs)
         # if choice==6:
         # if choice==7:
         # if choice==8:
