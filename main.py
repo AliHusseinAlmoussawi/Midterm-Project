@@ -13,6 +13,21 @@ def mainPage():
 
 
 if __name__ == '__main__':
-    mainPage()
+    while True:
+        mainPage()
+        choice = int(input("Input your choice:"))
+        if choice==1:
+            print(choice)
+        # if choice==2:
+        # if choice==3:
+        # if choice==4:
+        # if choice==5:
+        # if choice==6:
+        # if choice==7:
+        # if choice==8:
+        # if choice==9:
+
+
+
 
 
