@@ -36,6 +36,16 @@ def closeTab(Tabs):
 
 #choice 3:
 def switchTabs(Tabs):
+    i = int(input("Input the index of the tab you wish to open: "))
+    req=requests.get(Tabs[i]['URL'])
+    #checking the success of the request
+    if req.status_code==200:
+        print(req.text)
+    else:
+        print("Not available URL")
+
+#choice 4:
+
 
 if __name__ == '__main__':
     while True:
@@ -45,16 +55,16 @@ if __name__ == '__main__':
             addANewTab(Tabs)
         if choice==2:
             closeTab(Tabs)
-        print(Tabs)
+        if choice==3:
+            switchTabs(Tabs)
 
-        # if choice==3:
         # if choice==4:
         # if choice==5:
         # if choice==6:
         # if choice==7:
         # if choice==8:
         # if choice==9:
-
+        print(Tabs)
 
 
 
