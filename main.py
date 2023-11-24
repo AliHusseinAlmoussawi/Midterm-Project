@@ -17,7 +17,12 @@ def addANewTab(Tabs):
     Tab={}
     Title=input("Please enter the title: ")
     URL=input("Please enter the URL: ")
-    Tab[Title]=URL
+    content=''
+    nested_tabs=[]
+    Tab['Title']=Title
+    Tab['URL']=URL
+    Tab['Content']=content
+    Tab['nested_tabs']=nested_tabs
     Tabs.append(Tab)
     print(Tabs)
 
