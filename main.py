@@ -11,13 +11,18 @@ def mainPage():
     print("8. Import Tabs")
     print("9. Exit")
 
+#Choice 1
+def addANewTab():
+    Title=input("Please enter the title: ")
+    URL=input("Please enter the URL: ")
+
 
 if __name__ == '__main__':
     while True:
         mainPage()
-        choice = int(input("Input your choice:"))
+        choice = int(input("Input your choice: "))
         if choice==1:
-            print(choice)
+            addANewTab()
         # if choice==2:
         # if choice==3:
         # if choice==4:
