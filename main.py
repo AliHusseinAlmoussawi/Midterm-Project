@@ -1,4 +1,5 @@
 import requests
+import json
 Tabs=[]
 #Greeting the user and displaying optionss
 def mainPage():
@@ -87,6 +88,8 @@ def sortTabs(Tabs):
             j+=1
             k+=1
 
+#Saving tabs
+
 if __name__ == '__main__':
     while True:
         mainPage()
@@ -103,7 +106,7 @@ if __name__ == '__main__':
             createNestedLoops(Tabs)
         if choice==6:
             sortTabs(Tabs)
-        # if choice==7:
+        if choice==7:
         # if choice==8:
         if choice==9:
             print("Program closed")
