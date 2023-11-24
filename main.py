@@ -1,4 +1,4 @@
-Tabs={}
+Tabs=[]
 #Greeting the user and displaying optionss
 def mainPage():
     print("Hello, choose an option:")
@@ -14,18 +14,26 @@ def mainPage():
 
 #Choice 1
 def addANewTab(Tabs):
+    Tab={}
     Title=input("Please enter the title: ")
     URL=input("Please enter the URL: ")
-    Tabs[Title]=URL
+    Tab[Title]=URL
+    Tabs.append(Tab)
     print(Tabs)
 
+#choice 2
+def closeTab(Tabs):
+    i=int(input("Input the index of the tab you wish to close:"))
+    Tabs[i].remo
 if __name__ == '__main__':
     while True:
         mainPage()
         choice = int(input("Input your choice: "))
         if choice==1:
             addANewTab(Tabs)
-        # if choice==2:
+        if choice==2:
+            closeTab(Tabs)
+
         # if choice==3:
         # if choice==4:
         # if choice==5:
