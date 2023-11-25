@@ -35,6 +35,7 @@ def closeTab(Tabs):
     # check if input is valid
     elif 0 <= int(i) <= len(Tabs):
         Tabs.pop(int(i))
+        print("Tab closed successfully")
 
     else:
         print("Invalid input.")
@@ -80,6 +81,8 @@ def createNestedTabs(Tabs):
         tab['Content'] = input("Please enter the content of nested tab: ")
         Tabs[i]['nestedTabs'].append(tab)
 
+        print("Nested tab added successfully")
+
     else:
         print("Invalid index")
 
@@ -116,6 +119,9 @@ def sortTabs(Tabs):
             j+=1
             k+=1
 
+    print("Tabs sorted successfully")
+    printTitles(Tabs)
+
 #Sorting nested tabs
 def sortNestedTabs(Tabs):
     for tab in Tabs:
@@ -134,6 +140,8 @@ def saveTabs(Tabs):
         #Saving tabs in file
         json.dump(Tabs, file)
 
+        print("Files saved successfully")
+
     except IOError:
         print("Error saving tabs")
 
@@ -150,7 +158,7 @@ def loadTabs():
         # loading tabs from file
         loadedTabs = json.load(file)
 
-        printTitles(loadedTabs)
+        print("Tabs loaded successfully")
 
     except IOError:
         print("Error loading tabs")
