@@ -1,7 +1,10 @@
 import requests
 import json
+
+#Declaring list of openned tabs
 Tabs=[]
-#Greeting the user and displaying optionss
+
+#Greeting the user and displaying options
 def mainPage():
     print("Hello, choose an option:")
     print("1. Open Tab")
@@ -38,15 +41,27 @@ def closeTab(Tabs):
             print("Invalid input.")
             i=input("Input a valid index to close: ")
 
-#choice 3:
+#Displaying parent tab content
 def switchTabs(Tabs):
-    i = int(input("Input the index of the tab you wish to open: "))
-    req=requests.get(Tabs[i]['URL'])
-    #checking the success of the request
-    if req.status_code==200:
-        print(req.text)
-    else:
+    i = input("Input the index of the tab you wish to open: ")
+    if i=="":
+        i=len(Tabs)-1
+    elif i<0 or i>=len(Tabs):
+        print("Invalid index")
+
+    try:
+        req = requests.get(Tabs[i]['URL'])
+        # Checking the success of the request
+        if req.status_code == 200:
+            print(req.text)
+        else:
+            print("Content can't be loaded")
+            return
+
+    except requests.RequestException:
         print("Not available URL")
+        return
+
 
 #choice 4::
 def printTitles(Tabs):
