@@ -28,32 +28,32 @@ def addANewTab(Tabs):
 #Closing tab
 def closeTab(Tabs):
     i=input("Input the index of the tab you wish to close: ")
-    while True:
-        #check if input is empty
-        if i == "":
-            Tabs.pop()
-            break
-        #check if input is valid
-        elif 0 <= int(i) <= len(Tabs):
-            Tabs.pop(int(i))
-            break
-        else:
-            print("Invalid input.")
-            i=input("Input a valid index to close: ")
+    # check if input is empty
+    if i == "":
+        Tabs.pop()
+
+    # check if input is valid
+    elif 0 <= int(i) <= len(Tabs):
+        Tabs.pop(int(i))
+
+    else:
+        print("Invalid input.")
 
 #Displaying parent tab content
 def switchTabs(Tabs):
     i = input("Input the index of the tab you wish to open: ")
     if i=="":
         i=len(Tabs)-1
-    elif i<0 or i>=len(Tabs):
+
+    elif int(i)<0 or int(i)>=len(Tabs):
         print("Invalid index")
 
     try:
-        req = requests.get(Tabs[i]['URL'])
+        req = requests.get(Tabs[int(i)]['URL'])
         # Checking the success of the request
         if req.status_code == 200:
             print(req.text)
+
         else:
             print("Content can't be loaded")
             return
@@ -61,7 +61,6 @@ def switchTabs(Tabs):
     except requests.RequestException:
         print("Not available URL")
         return
-
 
 #Displaying titles of opened tabs
 def printTitles(Tabs):
@@ -73,9 +72,16 @@ def printTitles(Tabs):
 
 #Creating nested tabs
 def createNestedTabs(Tabs):
+    tab={}
     i=int(input("The index of the parent tab where the nested tab is created: "))
-    Tabs[i]['nestedTabs']['Title']=input("Please enter the title of nested tab: ")
-    Tabs[i]['nestedTabs']['Content'] = input("Please enter the content of nested tab: ")
+    #Checking the validity of the index
+    if i>=0 or i<len(Tabs):
+        tab['Title'] = input("Please enter the title of nested tab: ")
+        tab['Content'] = input("Please enter the content of nested tab: ")
+        Tabs[i]['nestedTabs'].append(tab)
+
+    else:
+        print("Invalid index")
 
 #Sorting tabs according to titles
 def sortTabs(Tabs):
@@ -93,6 +99,7 @@ def sortTabs(Tabs):
             if left[i]['Title']<right[j]['Title']:
                 Tabs[k]=left[i]
                 i+=1
+
             else:
                 Tabs[k]=right[j]
                 j+=1
@@ -117,27 +124,36 @@ def sortNestedTabs(Tabs):
 
 #Saving tabs
 def saveTabs(Tabs):
-    #taking file path from user
-    filePath=input("Enter the file path: ")
+    # Taking file path from user
+    filePath = input("Enter the file path: ")
 
-    #openning file
-    file=open(filePath,'w')
+    try:
+        #Opening file
+        file=open(filePath,'w')
 
-    #saving tabs in file
-    json.dump(Tabs, file)
+        #Saving tabs in file
+        json.dump(Tabs, file)
 
+    except IOError:
+        print("Error saving tabs")
+
+#Loading tabs from file
 def loadTabs():
     loadedTabs=[]
     #taking file path from user
     filePath=input("Enter the file path:")
 
-    #openning file
-    file = open(filePath, 'r')
+    try:
+        # openning file
+        file = open(filePath, 'r')
 
-    #loading tabs from file
-    loadedTabs=json.load(file)
+        # loading tabs from file
+        loadedTabs = json.load(file)
 
-    printTitles(loadedTabs)
+        printTitles(loadedTabs)
+
+    except IOError:
+        print("Error loading tabs")
 
 if __name__ == '__main__':
     while True:
