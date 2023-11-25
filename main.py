@@ -14,15 +14,12 @@ def mainPage():
     print("8. Import Tabs")
     print("9. Exit")
 
-#Choice 1
+#Adding new tab
 def addANewTab(Tabs):
     Tab={}
-    Title=input("Please enter the title: ")
-    URL=input("Please enter the URL: ")
-    nestedTabs=[]
-    Tab['Title']=Title
-    Tab['URL']=URL
-    Tab['nested_tabs']=nestedTabs
+    Tab['Title']=input("Please enter the title: ")
+    Tab['URL']=input("Please enter the url: ")
+    Tab['nestedTabs']=[]
     Tabs.append(Tab)
 
 #choice 2
