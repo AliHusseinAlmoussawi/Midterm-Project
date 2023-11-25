@@ -51,9 +51,11 @@ def printTitles(Tabs):
             for i in tab['nestedTabs']:
                 print("\t"+i['Title'])
 
-def createNestedLoops(Tabs):
+#Creating nested tabs
+def createNestedTabs(Tabs):
     i=int(input("The index of the parent tab where the nested tab is created: "))
-    addANewTab(Tabs[i]['nestedTabs'])
+    Tabs[i]['nestedTabs']['Title']=input("Please enter the title of nested tab: ")
+    Tabs[i]['nestedTabs']['Content'] = input("Please enter the content of nested tab: ")
 
 #choice 6(sorting tabs according to titles
 def sortTabs(Tabs):
@@ -128,7 +130,7 @@ if __name__ == '__main__':
         if choice==4:
             printTitles(Tabs)
         if choice==5:
-            createNestedLoops(Tabs)
+            createNestedTabs(Tabs)
         if choice==6:
             sortTabs(Tabs)
             sortNestedTabs(Tabs)
