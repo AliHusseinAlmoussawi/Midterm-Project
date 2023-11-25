@@ -1,9 +1,6 @@
 import requests
 import json
 
-#Declaring list of opened tabs
-Tabs=[]
-
 #Greeting the user and displaying options
 def mainPage():
     print("Hello, choose an option:")
@@ -147,18 +144,18 @@ def saveTabs(Tabs):
         print("Error saving tabs")
 
 #Loading tabs from file
-def loadTabs():
+def loadTabs(Tabs):
     loadedTabs=[]
     #Taking file path from user
     filePath=input("Enter the file path:")
 
     try:
         #Openning file
-        file = open(filePath, 'r')
+        file=open(filePath, 'r')
 
         #Loading tabs from file
-        loadedTabs = json.load(file)
-        Tabs.append(loadedTabs)
+        loadedTabs=json.load(file)
+        Tabs.extend(loadedTabs)
 
         #Adding loaded tabs to Tabs list
         print("Tabs loaded successfully")
@@ -167,9 +164,11 @@ def loadTabs():
         print("Error loading tabs")
 
 if __name__ == '__main__':
+    # Declaring list of opened tabs
+    Tabs = []
     while True:
         mainPage()
-        choice = int(input("Input your choice: "))
+        choice=int(input("Input your choice: "))
         if choice==1:
             addANewTab(Tabs)
 
@@ -193,7 +192,7 @@ if __name__ == '__main__':
             saveTabs(Tabs)
 
         if choice==8:
-            loadTabs()
+            loadTabs(Tabs)
 
         if choice==9:
             print("Program closed")
