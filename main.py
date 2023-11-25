@@ -18,7 +18,7 @@ def mainPage():
 def addANewTab(Tabs):
     Tab={}
     Tab['Title']=input("Please enter the title: ")
-    Tab['URL']=input("Please enter the url: ")
+    Tab['URL']= "https://"+input("Please enter the url: ")
     Tab['nestedTabs']=[]
     Tabs.append(Tab)
 
