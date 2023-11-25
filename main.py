@@ -31,6 +31,7 @@ def closeTab(Tabs):
     # check if input is empty
     if i == "":
         Tabs.pop()
+        print("Tab closed successfully")
 
     # check if input is valid
     elif 0 <= int(i) <= len(Tabs):
@@ -148,16 +149,18 @@ def saveTabs(Tabs):
 #Loading tabs from file
 def loadTabs():
     loadedTabs=[]
-    #taking file path from user
+    #Taking file path from user
     filePath=input("Enter the file path:")
 
     try:
-        # openning file
+        #Openning file
         file = open(filePath, 'r')
 
-        # loading tabs from file
+        #Loading tabs from file
         loadedTabs = json.load(file)
+        Tabs.append(loadedTabs)
 
+        #Adding loaded tabs to Tabs list
         print("Tabs loaded successfully")
 
     except IOError:
@@ -169,25 +172,32 @@ if __name__ == '__main__':
         choice = int(input("Input your choice: "))
         if choice==1:
             addANewTab(Tabs)
+
         if choice==2:
             closeTab(Tabs)
+
         if choice==3:
             switchTabs(Tabs)
+
         if choice==4:
             printTitles(Tabs)
+
         if choice==5:
             createNestedTabs(Tabs)
+
         if choice==6:
             sortTabs(Tabs)
             sortNestedTabs(Tabs)
+
         if choice==7:
             saveTabs(Tabs)
+
         if choice==8:
             loadTabs()
+
         if choice==9:
             print("Program closed")
             break
-        print(Tabs)
 
 
 
