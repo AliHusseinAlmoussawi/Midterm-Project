@@ -88,6 +88,11 @@ def sortTabs(Tabs):
             j+=1
             k+=1
 
+def sortNestedTabs(Tabs):
+    for tab in Tabs:
+        if len(tab['nested_tabs'])>1:
+            sortTabs(tab['nested_tabs'])
+
 #Saving tabs
 def saveTabs(Tabs):
     #taking file path from user
@@ -112,8 +117,6 @@ def loadTabs():
 
     printTitles(loadedTabs)
 
-
-
 if __name__ == '__main__':
     while True:
         mainPage()
@@ -130,6 +133,7 @@ if __name__ == '__main__':
             createNestedLoops(Tabs)
         if choice==6:
             sortTabs(Tabs)
+            sortNestedTabs(Tabs)
         if choice==7:
             saveTabs(Tabs)
         if choice==8:
