@@ -19,12 +19,10 @@ def addANewTab(Tabs):
     Tab={}
     Title=input("Please enter the title: ")
     URL=input("Please enter the URL: ")
-    content=''
-    nested_tabs=[]
+    nestedTabs=[]
     Tab['Title']=Title
     Tab['URL']=URL
-    Tab['Content']=content
-    Tab['nested_tabs']=nested_tabs
+    Tab['nested_tabs']=nestedTabs
     Tabs.append(Tab)
 
 #choice 2
@@ -49,13 +47,13 @@ def switchTabs(Tabs):
 def printTitles(Tabs):
     for tab in Tabs:
         print(tab['Title'])
-        if len(tab['nested_tabs'])!=0:
-            for i in tab['nested_tabs']:
+        if len(tab['nestedTabs'])!=0:
+            for i in tab['nestedTabs']:
                 print("\t"+i['Title'])
 
 def createNestedLoops(Tabs):
     i=int(input("The index of the parent tab where the nested tab is created: "))
-    addANewTab(Tabs[i]['nested_tabs'])
+    addANewTab(Tabs[i]['nestedTabs'])
 
 #choice 6(sorting tabs according to titles
 def sortTabs(Tabs):
@@ -90,8 +88,8 @@ def sortTabs(Tabs):
 
 def sortNestedTabs(Tabs):
     for tab in Tabs:
-        if len(tab['nested_tabs'])>1:
-            sortTabs(tab['nested_tabs'])
+        if len(tab['nestedTabs'])>1:
+            sortTabs(tab['nestedTabs'])
 
 #Saving tabs
 def saveTabs(Tabs):
