@@ -22,13 +22,21 @@ def addANewTab(Tabs):
     Tab['nestedTabs']=[]
     Tabs.append(Tab)
 
-#choice 2
+#Closing tab
 def closeTab(Tabs):
-    i=int(input("Input the index of the tab you wish to close:"))
-    if i<0 or i>len(Tabs):
-        Tabs.pop()
-    else:
-        Tabs.pop(i)
+    i=input("Input the index of the tab you wish to close: ")
+    while True:
+        #check if input is empty
+        if i == "":
+            Tabs.pop()
+            break
+        #check if input is valid
+        elif 0 <= int(i) <= len(Tabs):
+            Tabs.pop(int(i))
+            break
+        else:
+            print("Invalid input.")
+            i=input("Input a valid index to close: ")
 
 #choice 3:
 def switchTabs(Tabs):
