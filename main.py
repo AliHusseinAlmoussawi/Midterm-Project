@@ -1,7 +1,7 @@
 import requests
 import json
 
-#Declaring list of openned tabs
+#Declaring list of opened tabs
 Tabs=[]
 
 #Greeting the user and displaying options
@@ -63,7 +63,7 @@ def switchTabs(Tabs):
         return
 
 
-#choice 4::
+#Displaying titles of opened tabs
 def printTitles(Tabs):
     for tab in Tabs:
         print(tab['Title'])
@@ -77,7 +77,7 @@ def createNestedTabs(Tabs):
     Tabs[i]['nestedTabs']['Title']=input("Please enter the title of nested tab: ")
     Tabs[i]['nestedTabs']['Content'] = input("Please enter the content of nested tab: ")
 
-#choice 6(sorting tabs according to titles
+#Sorting tabs according to titles
 def sortTabs(Tabs):
     if len(Tabs)>1:
         mid=len(Tabs)//2
@@ -98,6 +98,7 @@ def sortTabs(Tabs):
                 j+=1
 
             k+=1
+
         while i<len(left):
             Tabs[k]=left[i]
             i+=1
@@ -108,6 +109,7 @@ def sortTabs(Tabs):
             j+=1
             k+=1
 
+#Sorting nested tabs
 def sortNestedTabs(Tabs):
     for tab in Tabs:
         if len(tab['nestedTabs'])>1:
