@@ -74,7 +74,7 @@ def createNestedTabs(Tabs):
     tab={}
     i=int(input("The index of the parent tab where the nested tab is created: "))
     #Checking the validity of the index
-    if i>=0 or i<len(Tabs):
+    if i>=0 and i<len(Tabs):
         tab['Title'] = input("Please enter the title of nested tab: ")
         tab['Content'] = input("Please enter the content of nested tab: ")
         Tabs[i]['nestedTabs'].append(tab)
