@@ -23,6 +23,7 @@ def addANewTab(Tabs):
     Tab['URL'] = "https://" + input("Please enter the url: ")
     Tab['nestedTabs'] = []
     Tabs.append(Tab)
+    print("Tab is successfully opened.")
 
 
 # Closing tab
@@ -34,13 +35,15 @@ def closeTab(Tabs):
         print("Tab closed successfully")
 
     # check if input is valid
-    elif 0 <= int(i) <= len(Tabs):
-        Tabs.pop(int(i))
-        print("Tab closed successfully")
+    elif i.isdigit()==True:
+        if 0 <= int(i) <= len(Tabs):
+            Tabs.pop(int(i))
+            print("Tab closed successfully")
 
+        else:
+            print("Invalid input.")
     else:
-        print("Invalid input.")
-
+        print("Invalid input")
 
 # Displaying parent tab content
 def switchTabs(Tabs):
@@ -139,7 +142,7 @@ def sortTabs(Tabs):
 
         print("Tabs sorted successfully")
     else:
-        print("There should be at least two tabs to sort.6")
+        print("There should be at least two tabs to sort.")
     printTitles(Tabs)
 
 
