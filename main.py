@@ -40,28 +40,30 @@ def closeTab(Tabs):
 
 #Displaying parent tab content
 def switchTabs(Tabs):
-    i = input("Input the index of the tab you wish to open: ")
+    i=input("Input the index of the tab you wish to open: ")
     if i=="":
         i=len(Tabs)-1
     #Checking for the validity of the index
-    elif int(i)<0 or int(i)>=len(Tabs):
-        print("Invalid index")
-        return
-
-    try:
-        req = requests.get(Tabs[int(i)]['URL'])
-        # Checking the success of the request
-        if req.status_code == 200:
-            print(req.text)
-
-        else:
-            print("Content can't be loaded")
+    elif i.isdigit()==True:
+        if int(i)<0 or int(i)>=len(Tabs):
+            print("Invalid index")
             return
 
-    except requests.RequestException:
-        print("Not available URL")
-        return
+        try:
+            req = requests.get(Tabs[int(i)]['URL'])
+            # Checking the success of the request
+            if req.status_code == 200:
+                print(req.text)
 
+            else:
+                print("Content can't be loaded")
+                return
+
+        except requests.RequestException:
+            print("Not available URL")
+            return
+    else:
+        print("Invalid index.")
 #Displaying titles of opened tabs
 def printTitles(Tabs):
     for tab in Tabs:
@@ -75,52 +77,61 @@ def createNestedTabs(Tabs):
     tab={}
     #Checking if Tabs list contain any tab inorder to create a nested tab
     if len(Tabs)!=0:
-        i=int(input("The index of the parent tab where the nested tab is created: "))
-        #Checking the validity of the index
-        if i>=0 and i<len(Tabs):
-            tab['Title'] = input("Please enter the title of nested tab: ")
-            tab['Content'] = input("Please enter the content of nested tab: ")
-            Tabs[i]['nestedTabs'].append(tab)
+        i=input("The index of the parent tab where the nested tab is created: ")
+        #Checking the validity of the index(i should be a positive integer only)
+        if i.isdigit()==True:
+            if int(i)>=0 and int(i)<len(Tabs):
+                tab['Title'] = input("Please enter the title of nested tab: ")
+                tab['Content'] = input("Please enter the content of nested tab: ")
+                Tabs[int(i)]['nestedTabs'].append(tab)
 
-            print("Nested tab added successfully")
+                print("Nested tab added successfully")
+
+            else:
+                print("Invalid index")
 
         else:
             print("Invalid index")
+    else:
+        print("At least one tab should be opened to create a nested tab.")
 
 #Sorting tabs according to titles
 def sortTabs(Tabs):
     if len(Tabs)>1:
-        mid=len(Tabs)//2
-        left=Tabs[:mid]
-        right=Tabs[mid:]
+        if len(Tabs)>1:
+            mid=len(Tabs)//2
+            left=Tabs[:mid]
+            right=Tabs[mid:]
 
-        sortTabs(left)
-        sortTabs(right)
+            sortTabs(left)
+            sortTabs(right)
 
-        i=j=k=0
+            i=j=k=0
 
-        while i<len(left) and j<len(right):
-            if left[i]['Title']<right[j]['Title']:
+            while i<len(left) and j<len(right):
+                if left[i]['Title']<right[j]['Title']:
+                    Tabs[k]=left[i]
+                    i+=1
+
+                else:
+                    Tabs[k]=right[j]
+                    j+=1
+
+                k+=1
+
+            while i<len(left):
                 Tabs[k]=left[i]
                 i+=1
+                k+=1
 
-            else:
-                Tabs[k]=right[j]
+            while j<len(right):
+                Tabs[k] = right[j]
                 j+=1
+                k+=1
 
-            k+=1
-
-        while i<len(left):
-            Tabs[k]=left[i]
-            i+=1
-            k+=1
-
-        while j<len(right):
-            Tabs[k] = right[j]
-            j+=1
-            k+=1
-
-    print("Tabs sorted successfully")
+        print("Tabs sorted successfully")
+    else:
+        print("There should be at least two tabs to sort.6")
     printTitles(Tabs)
 
 #Sorting nested tabs
