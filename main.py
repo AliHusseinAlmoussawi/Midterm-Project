@@ -43,9 +43,10 @@ def switchTabs(Tabs):
     i = input("Input the index of the tab you wish to open: ")
     if i=="":
         i=len(Tabs)-1
-
+    #Checking for the validity of the index
     elif int(i)<0 or int(i)>=len(Tabs):
         print("Invalid index")
+        return
 
     try:
         req = requests.get(Tabs[int(i)]['URL'])
