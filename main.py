@@ -3,7 +3,7 @@ import json
 
 #Greeting the user and displaying options
 def mainPage():
-    print("Hello, choose an option:")
+    print("Choose an option")
     print("1. Open Tab")
     print("2. Close Tab")
     print("3. Switch Tab")
@@ -153,7 +153,7 @@ def loadTabs(Tabs):
         #Openning file
         file=open(filePath, 'r')
 
-        #Loading tabs from file
+        #Loading tabs from file and adding them to Tabs list
         loadedTabs=json.load(file)
         Tabs.extend(loadedTabs)
 
@@ -166,6 +166,8 @@ def loadTabs(Tabs):
 if __name__ == '__main__':
     # Declaring list of opened tabs
     Tabs = []
+    #Greeting the user
+    print("Hello, welcome to my program!")
     while True:
         mainPage()
 
