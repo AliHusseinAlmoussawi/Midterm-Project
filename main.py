@@ -72,17 +72,19 @@ def printTitles(Tabs):
 #Creating nested tabs
 def createNestedTabs(Tabs):
     tab={}
-    i=int(input("The index of the parent tab where the nested tab is created: "))
-    #Checking the validity of the index
-    if i>=0 and i<len(Tabs):
-        tab['Title'] = input("Please enter the title of nested tab: ")
-        tab['Content'] = input("Please enter the content of nested tab: ")
-        Tabs[i]['nestedTabs'].append(tab)
+    #Checking if Tabs list contain any tab inorder to create a nested tab
+    if len(Tabs)!=0:
+        i=int(input("The index of the parent tab where the nested tab is created: "))
+        #Checking the validity of the index
+        if i>=0 and i<len(Tabs):
+            tab['Title'] = input("Please enter the title of nested tab: ")
+            tab['Content'] = input("Please enter the content of nested tab: ")
+            Tabs[i]['nestedTabs'].append(tab)
 
-        print("Nested tab added successfully")
+            print("Nested tab added successfully")
 
-    else:
-        print("Invalid index")
+        else:
+            print("Invalid index")
 
 #Sorting tabs according to titles
 def sortTabs(Tabs):
