@@ -109,42 +109,38 @@ def createNestedTabs(Tabs):
 # Sorting tabs according to titles
 def sortTabs(Tabs):
     if len(Tabs) > 1:
-        if len(Tabs) > 1:
-            mid = len(Tabs) // 2
-            left = Tabs[:mid]
-            right = Tabs[mid:]
+        mid = len(Tabs) // 2
+        left = Tabs[:mid]
+        right = Tabs[mid:]
 
-            sortTabs(left)
-            sortTabs(right)
+        sortTabs(left)
+        sortTabs(right)
 
-            i = j = k = 0
+        i = j = k = 0
 
-            while i < len(left) and j < len(right):
-                if left[i]['Title'] < right[j]['Title']:
-                    Tabs[k] = left[i]
-                    i += 1
-
-                else:
-                    Tabs[k] = right[j]
-                    j += 1
-
-                k += 1
-
-            while i < len(left):
+        while i < len(left) and j < len(right):
+            if left[i]['Title'] < right[j]['Title']:
                 Tabs[k] = left[i]
                 i += 1
-                k += 1
 
-            while j < len(right):
+            else:
                 Tabs[k] = right[j]
                 j += 1
-                k += 1
 
-        print("Tabs sorted successfully")
+            k += 1
+
+        while i < len(left):
+            Tabs[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            Tabs[k] = right[j]
+            j += 1
+            k += 1
+
     else:
-        print("There should be at least two tabs to sort.")
-    printTitles(Tabs)
-
+        return
 
 # Sorting nested tabs
 def sortNestedTabs(Tabs):
