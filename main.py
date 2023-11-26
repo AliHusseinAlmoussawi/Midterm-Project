@@ -168,36 +168,39 @@ if __name__ == '__main__':
     Tabs = []
     while True:
         mainPage()
-        choice=int(input("Input your choice: "))
-        if choice==1:
+
+        choice = input("Input your choice(1---9): ")
+
+        if choice=='1':
             addANewTab(Tabs)
 
-        if choice==2:
+        elif choice=='2':
             closeTab(Tabs)
 
-        if choice==3:
+        elif choice=='3':
             switchTabs(Tabs)
 
-        if choice==4:
+        elif choice=='4':
             printTitles(Tabs)
 
-        if choice==5:
+        elif choice=='5':
             createNestedTabs(Tabs)
 
-        if choice==6:
+        elif choice=='6':
             sortTabs(Tabs)
             sortNestedTabs(Tabs)
 
-        if choice==7:
+        elif choice=='7':
             saveTabs(Tabs)
 
-        if choice==8:
+        elif choice=='8':
             loadTabs(Tabs)
 
-        if choice==9:
+        elif choice=='9':
             print("Program closed")
             break
 
-
-
-
+        # Check validity of choice
+        else:
+            print("Input is invalid.")
+            continue
